@@ -3,21 +3,11 @@ config BR2_DEVICE_FARM
 	select BR2_PACKAGE_WIREGUARD_TOOLS
 	select BR2_PACKAGE_IPROUTE2
 	select BR2_PACKAGE_IPTABLES
-	select BR2_PACKAGE_DOCKER_ENGINE	
+	depends on BR2_PACKAGE_DOCKER_ENGINE	
 	help
 	  This is a meta package for dependencies required to connect the device to DEVICE.FARM.
 
 	  http://www.device.farm
 
-#comment "device-farm needs wireguard tools"
-#	depends on !BR2_PACKAGE_WIREGUARD_TOOLS
-#
-#comment "device-farm needs iproute2"
-#	depends on !BR2_PACKAGE_IPROUTE2
-#
-#comment "device-farm needs iptables"
-#	depends on !BR2_PACKAGE_IPTABLES
-#
-#comment "device-farm needs docker-engine"
-#	depends on !BR2_PACKAGE_DOCKER_ENGINE
-
+comment "device.farm needs docker-engine"
+	depends on !BR2_PACKAGE_DOCKER_ENGINE
