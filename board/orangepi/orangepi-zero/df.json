@@ -1,0 +1,8 @@
+[
+    {
+        "name": "Orange Pi Zero",
+        "defconfig": "df_orangepi_zero_defconfig",
+        "picture": "orangepi-zero.jpg",
+        "maker": "Xunlong"
+    }
+]

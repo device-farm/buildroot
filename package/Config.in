@@ -2060,6 +2060,7 @@ menu "Networking applications"
 	source "package/dante/Config.in"
 	source "package/darkhttpd/Config.in"
 	source "package/dehydrated/Config.in"
+	source "package/device-farm/Config.in"
 	source "package/dhcp/Config.in"
 	source "package/dhcpcd/Config.in"
 	source "package/dhcpdump/Config.in"
@@ -2289,7 +2290,6 @@ endif
 	source "package/xl2tp/Config.in"
 	source "package/xtables-addons/Config.in"
 	source "package/znc/Config.in"
-
 endmenu
 
 menu "Package managers"
