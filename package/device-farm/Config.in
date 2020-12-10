@@ -3,11 +3,15 @@ config BR2_DEVICE_FARM
 	select BR2_PACKAGE_WIREGUARD_TOOLS
 	select BR2_PACKAGE_IPROUTE2
 	select BR2_PACKAGE_IPTABLES
-	depends on BR2_PACKAGE_DOCKER_ENGINE	
+	select BR2_PACKAGE_DOCKER_ENGINE
+	select BR2_PACKAGE_DOCKER_ENGINE_DRIVER_VFS
 	help
 	  This is a meta package for dependencies required to connect the device to DEVICE.FARM.
 
 	  http://www.device.farm
 
-comment "device.farm needs docker-engine"
-	depends on !BR2_PACKAGE_DOCKER_ENGINE
+comment "device-farm needs docker-engine which needs a glibc or musl toolchain w/ threads"
+	depends on BR2_PACKAGE_HOST_GO_TARGET_ARCH_SUPPORTS
+	depends on BR2_PACKAGE_HOST_GO_TARGET_CGO_LINKING_SUPPORTS
+	depends on !BR2_TOOLCHAIN_HAS_THREADS || BR2_TOOLCHAIN_USES_UCLIBC
+	depends on BR2_USE_MMU
