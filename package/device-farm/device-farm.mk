@@ -8,4 +8,5 @@ define DEVICE_FARM_LINUX_CONFIG_FIXUPS
 	$(call KCONFIG_ENABLE_OPT,CONFIG_NETFILTER_XT_MATCH_ADDRTYPE)
 endef
 
-$(eval $(generic-package))
+$(eval $(kconfig-package))
+#$(eval $(generic-package))
