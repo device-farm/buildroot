@@ -1,4 +1,4 @@
-config BR2_DEVICE_FARM
+config BR2_PACKAGE_DEVICE_FARM
 	bool "device.farm connected device"
 	select BR2_PACKAGE_WIREGUARD_TOOLS
 	select BR2_PACKAGE_IPROUTE2
