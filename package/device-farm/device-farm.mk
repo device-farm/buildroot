@@ -8,4 +8,10 @@ define DEVICE_FARM_LINUX_CONFIG_FIXUPS
 	$(call KCONFIG_ENABLE_OPT,CONFIG_NETFILTER_XT_MATCH_ADDRTYPE)
 endef
 
+define DEVICE_FARM_INSTALL_TARGET_CMDS
+	$(INSTALL) -d -m 0755 $(TARGET_DIR)/etc/default
+	$(INSTALL) -D -m 0644 $(DEVICE_FARM_PKGDIR)/etc-default-dockerd $(TARGET_DIR)/etc/default/dockerd
+	$(INSTALL) -D -m 0644 $(DEVICE_FARM_PKGDIR)/etc-init.d-S50df-wireguard $(TARGET_DIR)/etc/init.d/S50df-wireguard
+endef
+
 $(eval $(virtual-package))
