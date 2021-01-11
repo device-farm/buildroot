@@ -34,3 +34,11 @@ To create a new defconfig:
 1. select DEVICE.FARM support package `BR2_PACKAGE_DEVICE_FARM` (Target packages/Networking applications/device.farm connected device)
 1. exit menuconfig
 1. save new defconfig by `make savedefconfig`
+
+## TODO
+- fscheck on start
+  - if not swap, create 1G swap, use
+  - if not mounted /data, create partition, mount
+- wifi conf on start (if wpa_supplicant installed)
+  - start wpa_supplicant 
+- wg settings

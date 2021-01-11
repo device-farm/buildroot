@@ -1,0 +1,80 @@
+#!/bin/sh
+#
+# Start WiFi
+#
+
+if [ ! -f /etc/default/df-wifi]; then
+    echo "WiFi disabled"
+    exit
+fi
+
+set -e
+
+PID_FILE_S=/var/run/wpa_supplicant.pid
+PID_FILE_C=/var/run/wpa_cli.pid
+
+start() {
+
+    echo "Starting WiFi..."
+
+    cat >/etc/wpa_supplicant.conf <<EOF
+ctrl_interface=/var/run/wpa_supplicant
+ap_scan=1
+
+network={
+
+EOF
+
+    cat /etc/default/df-wifi >>/etc/wpa_supplicant.conf
+
+    echo "}" >>/etc/wpa_supplicant.conf
+
+    wpa_supplicant -B -P $PID_FILE_S -Dnl80211 -i wlan0 -c/etc/wpa_supplicant.conf
+    wpa_cli -B -a $(readlink -f $0) -i wlan0 -P $PID_FILE_C
+
+}
+
+stop() {
+
+    echo "Stopping WiFi..."
+
+    set +e
+    kill $(cat $PID_FILE_S)
+    kill $(cat $PID_FILE_C)
+    set -e
+}
+
+restart() {
+    stop
+    start
+}
+
+interface_CONNECTED() {
+    echo "WiFi connected"
+
+    udhcpc -i wlan0
+}
+
+interface_DISCONNECTED() {
+    echo "WiFi disconnected"
+}
+
+case "$1" in
+start)
+    start
+    ;;
+stop)
+    stop
+    ;;
+restart | reload)
+    restart
+    ;;
+
+wlan0)
+    interface_$2
+    ;;
+*)
+    echo "Usage: $0 {start|stop|restart}"
+    exit 1
+    ;;
+esac
