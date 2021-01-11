@@ -13,9 +13,15 @@ define DEVICE_FARM_INSTALL_TARGET_CMDS
 	$(INSTALL) -D -m 0644 $(DEVICE_FARM_PKGDIR)/etc-default-dockerd $(TARGET_DIR)/etc/default/dockerd
 	$(INSTALL) -D -m 0744 $(DEVICE_FARM_PKGDIR)/etc-init.d-S50df-wireguard $(TARGET_DIR)/etc/init.d/S50df-wireguard
 
-	ifeq ($(BR2_PACKAGE_WPA_SUPPLICANT),y)
-		$(INSTALL) -D -m 0744 $(DEVICE_FARM_PKGDIR)/etc-init.d-S45df-wifi $(TARGET_DIR)/etc/init.d/S45df-wifi
-	endif
+	#TODO make this optional, the block bellow does not work
+	$(INSTALL) -D -m 0744 $(DEVICE_FARM_PKGDIR)/etc-init.d-S45df-wifi $(TARGET_DIR)/etc/init.d/S45df-wifi
 endef
+
+#ifeq ($(BR2_PACKAGE_WPA_SUPPLICANT),y)
+#define DEVICE_FARM_INSTALL_WIFI
+#	$(INSTALL) -D -m 0744 $(DEVICE_FARM_PKGDIR)/etc-init.d-S45df-wifi $(TARGET_DIR)/etc/init.d/S45df-wifi
+#endef
+#DEVICE_FARM_INSTALL_TARGET_CMDS += DEVICE_FARM_INSTALL_WIFI
+#endif
 
 $(eval $(virtual-package))
