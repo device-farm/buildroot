@@ -42,3 +42,4 @@ To create a new defconfig:
 - wifi conf on start (if wpa_supplicant installed)
   - start wpa_supplicant 
 - wg settings
+- uboot disable USB
