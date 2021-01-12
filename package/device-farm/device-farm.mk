@@ -9,8 +9,6 @@ define DEVICE_FARM_LINUX_CONFIG_FIXUPS
 endef
 
 define DEVICE_FARM_INSTALL_TARGET_CMDS
-	$(INSTALL) -d -m 0755 $(TARGET_DIR)/etc/default
-	$(INSTALL) -D -m 0644 $(DEVICE_FARM_PKGDIR)/etc-default-dockerd $(TARGET_DIR)/etc/default/dockerd
 	$(call SYSTEM_RSYNC,$(DEVICE_FARM_PKGDIR)/install,$(TARGET_DIR))
 endef
 
