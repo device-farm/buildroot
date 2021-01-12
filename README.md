@@ -41,5 +41,5 @@ To create a new defconfig:
   - if not mounted /data, create partition, mount
 - wifi conf on start (if wpa_supplicant installed)
   - start wpa_supplicant 
-- wg settings
+- wg to start without network (DNS resolve issue, WG_ENDPOINT_RESOLUTION_RETRIES)
 - uboot disable USB
