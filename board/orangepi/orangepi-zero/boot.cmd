@@ -1,3 +1,7 @@
+setenv bootdelay 1
+setenv boot_targets mmc0
+setenv preboot 
+
 setenv fdt_high ffffffff
 
 setenv bootargs console=ttyS0,115200 earlyprintk root=/dev/mmcblk0p2 rootwait

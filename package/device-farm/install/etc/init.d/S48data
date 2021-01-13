@@ -1,0 +1,37 @@
+#!/bin/sh
+
+do_start() {
+        echo "Checking /data volume..."
+#        mount | grep "on /sys type" >/dev/null        
+#        if [ !  ]
+
+# fdisk /dev/mmcblk0 <<EOF
+# n
+# 3
+
+
+# w
+# q
+# EOF
+
+}
+
+do_stop() {
+}
+
+case "$1" in
+        start)
+                do_start
+                ;;
+        stop)
+                do_stop
+                ;;
+        restart)
+                do_stop
+                sleep 1
+                do_start
+                ;;
+	*)
+                echo "Usage: $0 {start|stop|restart}"
+                exit 1
+esac

@@ -30,16 +30,14 @@ To create a new defconfig:
 1. run `make menuconfig`
 1. add `df_` prefix to `BR2_DEFCONFIG` (Build options/Location to save buildroot config)
 1. change C library to `musl` i.e. select BR2_TOOLCHAIN_BUILDROOT_MUSL (Toolchain/C library)
-1. change root size to `200` in `BR2_TARGET_ROOTFS_EXT2_SIZE` (Filesystem images/exact size)
+1. change root size to 300M in `BR2_TARGET_ROOTFS_EXT2_SIZE` (Filesystem images/exact size); make sure there is no explicit size parameter in genimage.cfg 
 1. select DEVICE.FARM support package `BR2_PACKAGE_DEVICE_FARM` (Target packages/Networking applications/device.farm connected device)
 1. exit menuconfig
 1. save new defconfig by `make savedefconfig`
 
 ## TODO
 - fscheck on start
-  - if not swap, create 1G swap, use
   - if not mounted /data, create partition, mount
-- wifi conf on start (if wpa_supplicant installed)
-  - start wpa_supplicant 
-- wg to start without network (DNS resolve issue, WG_ENDPOINT_RESOLUTION_RETRIES)
+- set docker root dir by --data-root
+
 - uboot disable USB
