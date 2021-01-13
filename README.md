@@ -35,6 +35,15 @@ To create a new defconfig:
 1. exit menuconfig
 1. save new defconfig by `make savedefconfig`
 
+
+
+To speedup the process, USB boot may be disabled by adding the following to the top of board's boot.cmd:
+```
+setenv bootdelay 1
+setenv boot_targets mmc0
+setenv preboot 
+```
+
 ## TODO
 - fscheck on start
   - if not mounted /data, create partition, mount
