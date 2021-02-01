@@ -1,37 +1,58 @@
 #!/bin/sh
 
+set -e
+
+BLKDEV=/dev/mmcblk0
+PARTNO=3
+
+MOUNTPOINT=/data
+
 do_start() {
-        echo "Checking /data volume..."
-#        mount | grep "on /sys type" >/dev/null        
-#        if [ !  ]
+        echo "Checking $MOUNTPOINT"
 
-# fdisk /dev/mmcblk0 <<EOF
-# n
-# 3
+        if test ! -b ${BLKDEV}p${PARTNO}; then
+                (
+                        echo n
+                        echo ""
+                        echo ""
+                        echo ""
+                        echo ""
+                        sleep 2
+                        echo wq
+                ) | fdisk $BLKDEV
 
+                echo "Y" | mkfs.ext3 -L DATA -e continue ${BLKDEV}p${PARTNO}
+        fi
 
-# w
-# q
-# EOF
+        if test ! -d ${MOUNTPOINT}; then
+                mkdir ${MOUNTPOINT}
+        fi
 
+        if ! mount | grep -q "^${BLKDEV}p${PARTNO} on ${MOUNTPOINT}"; then
+                echo "Mounting ${BLKDEV}p${PARTNO} as ${MOUNTPOINT}"
+                mount ${BLKDEV}p${PARTNO} ${MOUNTPOINT}
+        fi
 }
 
 do_stop() {
+        echo "Unmounting ${MOUNTPOINT}"
+        umount ${MOUNTPOINT}
 }
 
 case "$1" in
-        start)
-                do_start
-                ;;
-        stop)
-                do_stop
-                ;;
-        restart)
-                do_stop
-                sleep 1
-                do_start
-                ;;
-	*)
-                echo "Usage: $0 {start|stop|restart}"
-                exit 1
+start)
+        do_start
+        ;;
+stop)
+        do_stop
+        ;;
+restart)
+        do_stop
+        sleep 1
+        do_start
+        ;;
+*)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
 esac
