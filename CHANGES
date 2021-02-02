@@ -1,3 +1,69 @@
+2020.11.2, released January 31st, 2021
+
+	Important / security related fixes.
+
+	Download: Ensure git submodules are correctly fetched if
+	enabled for a package with <pkg>_GIT_SUBMODULES = YES and the
+	host variant is downloaded first.
+
+	Toolchain: Mark CodeSourcery Aarch64 2014.11 toolchain as not
+	having libatomic. Bootlin PowerPC-440 FP toolchain updated for
+	SecurePLT fix.
+
+	pkg-stats: Fix python 3.8+ deprecation warning.
+
+	meson: Ensure ccache is not detected and used, as it may
+	conflict with the ccache handling in Buildroot.
+
+	Updated/fixed packages: barebox, boost, brltty, dbus,
+	docker-containerd, dovecot, dovecot-pigeonhole,
+	environment-setup, firmware-imx, gcc, gerbera, glibc,
+	gmrender-resurrect, igd2-for-linux, kodi-pvr-zattoo, libclc,
+	libfuse3, libllcp, libodb-mysql, libtorrent-rasterbar,
+	libupnp, lpc32xxcdl, luarocks, mpd, multipath-tools, mutt,
+	nfs-utils, nodejs, openjpeg, openldap, opentracing-cpp,
+	openvpn, p11-kit, paho-mqtt-c, php, poppler, postgresql,
+	python3, redis, resiprocate, rpm, runc, socat, sslh, sudo,
+	sunxi-mali-mainline-driver, syslog-ng, systemd, tini,
+	tpm2-tss, trace-cmd, tzdata, uboot-tools, uhd, ushare,
+	util-linux, vlc, wavpack, wireguard-linux-compat, wolfssl,
+	xapp_xload, xorriso, zic
+
+	Removed packages: libupnp18
+
+	Issues resolved (http://bugs.uclibc.org):
+
+	#13471: package/mpd/mpd.conf make use of path not created
+
+2020.11.1, released December 27th, 2020
+
+	Important / security related fixes.
+
+	Infrastructure:
+	- cmake: fix host ccache handling for CMake 3.19
+	- meson: Forcibly disable binary stripping for
+	  target builds, enable for host builds
+	- golang: Fix HOST / TARGET directories for per-package builds
+
+	Defconfigs: Beaglebone Qt5: Fix ti-sgx related issues
+
+	Updated/fixed packages: apitrace, arm-trusted-firmware,
+	ca-certificates, cryptopp, dhcpcd, dtv-scan-tables,
+	flare-engine, ghostscript, go, haproxy, imagemagick,
+	imx-gpu-viv, jasper, kismet, libcurl, libglib2, libhtp,
+	libopenssl, libressl, libuv, libuvw, lua, mbedtls, mongodb,
+	mutt, ncurses, netsnmp, nodejs, opencv3, openldap, opkg-utils,
+	paho-mqtt-c, python-crc16, python-lxml, python-pyparsing,
+	python-pyqt5, qt5base, rauc, shadowsocks-libev, sqlcipher,
+	suricata, ti-sgx-demos, tinycbor, uclibc-ng-test, unbound,
+	webkitgtk, wpewebkit, wireshark, x11vnc, xen,
+	xserver_xorg-server
+
+	Issues resolved (http://bugs.uclibc.org):
+
+	#13316: beaglebone_qt5_defconfig: PowerVR fails to start
+	#13416: dhcpcd start warning message: no such user dhcpcd
+
 2020.11, released December 2nd, 2020
 
 	Various fixes.
