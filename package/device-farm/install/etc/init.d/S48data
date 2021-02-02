@@ -21,7 +21,7 @@ do_start() {
                         echo wq
                 ) | fdisk $BLKDEV
 
-                echo "Y" | mkfs.ext3 -L DATA -e continue ${BLKDEV}p${PARTNO}
+                echo "Y" | mkfs.ext4 -L DATA -e continue ${BLKDEV}p${PARTNO}
         fi
 
         if test ! -d ${MOUNTPOINT}; then

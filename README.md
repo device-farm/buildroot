@@ -50,3 +50,5 @@ setenv preboot
 - set docker root dir by --data-root
 
 - uboot disable USB
+
+- out of tree?
