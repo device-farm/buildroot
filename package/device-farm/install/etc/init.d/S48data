@@ -24,9 +24,10 @@ do_start() {
                 echo "Y" | mkfs.ext4 -L DATA -e continue ${BLKDEV}p${PARTNO}
         fi
 
-        if test ! -d ${MOUNTPOINT}; then
-                mkdir ${MOUNTPOINT}
-        fi
+        # TODO remove this, /data is created during image build
+        # if test ! -d ${MOUNTPOINT}; then
+        #         mkdir ${MOUNTPOINT}
+        # fi
 
         if ! mount | grep -q "^${BLKDEV}p${PARTNO} on ${MOUNTPOINT}"; then
                 echo "Mounting ${BLKDEV}p${PARTNO} as ${MOUNTPOINT}"
