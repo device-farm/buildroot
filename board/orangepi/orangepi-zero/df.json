@@ -3,6 +3,11 @@
         "name": "Orange Pi Zero",
         "defconfig": "df_orangepi_zero_defconfig",
         "picture": "orangepi-zero.jpg",
-        "maker": "Xunlong"
+        "maker": "Xunlong",
+        "customization": {
+            "wifi": "wpa_supplicant.conf",
+            "wireguard": "df-wireguard"
+        },
+        "image": "output/images/sdcard.img"
     }
 ]

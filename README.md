@@ -37,18 +37,13 @@ To create a new defconfig:
 
 
 
-To speedup the process, USB boot may be disabled by adding the following to the top of board's boot.cmd:
+To speedup the process, USB boot may be disabled in u-boot interactive mode:
 ```
-setenv bootdelay 1
+setenv bootdelay 0
 setenv boot_targets mmc0
 setenv preboot 
+saveenv
+reset
 ```
 
 ## TODO
-- fscheck on start
-  - if not mounted /data, create partition, mount
-- set docker root dir by --data-root
-
-- uboot disable USB
-
-- out of tree?
