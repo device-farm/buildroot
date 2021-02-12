@@ -1,0 +1,13 @@
+[
+    {
+        "name": "Orange Pi One Plus",
+        "defconfig": "df_orangepi_one_plus_defconfig",
+        "picture": "orangepi-one-plus.jpg",
+        "maker": "Xunlong",
+        "customization": {
+            "wifi": "wpa_supplicant.conf",
+            "wireguard": "df-wireguard"
+        },
+        "image": "output/images/sdcard.img"
+    }
+]
